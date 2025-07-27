@@ -1,0 +1,30 @@
+plugins {
+    id 'maven-publish'
+}
+
+group = 'com.arthenica'
+version = '6.0-2'
+
+publishing {
+    publications {
+        mavenAar(MavenPublication) {
+            groupId = 'com.arthenica'
+            artifactId = 'ffmpeg-kit-https'
+            version = '6.0-2'
+
+            artifact(file("ffmpeg-kit-https-6.0-2.aar")) {
+                extension 'aar'
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url = uri('https://maven.pkg.github.com/wanyunhao/ffmpeg-kit-repo1')
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GPR_USER")
+                password = project.findProperty("gpr.key") ?: System.getenv("GPR_API_KEY")
+            }
+        }
+    }
+}
