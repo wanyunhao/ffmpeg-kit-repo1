@@ -1,4 +1,4 @@
-name: Publish AAR to GitHub Packages
+﻿name: Publish AAR to GitHub Packages
 
 on:
   workflow_dispatch:
